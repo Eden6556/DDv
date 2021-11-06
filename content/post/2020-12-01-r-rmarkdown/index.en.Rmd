@@ -1,0 +1,42 @@
+---
+title: "DV Page"
+author: "Hangyu Shan"
+date: 2021-11-06
+categories: ["R"]
+tags: ["R Markdown", "plot", "Visulization"]
+---
+
+>This is a DV about cases in different age groups.
+
+Here is the simple data after operating.
+
+```{r DV1, message=FALSE, warning=FALSE, include=FALSE}
+data <- read.csv("confirmed_cases_table2_age_group.csv")
+a <- table(data$age_group)
+#print(a)
+newone <- as.data.frame(a)
+#print(newone)
+names(newone) <- c("AgeGroups","Cases")
+#print(newone)
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+print(newone)
+library(ggplot2)
+library(plotly)
+ggplotly(ggplot(data=newone,mapping = aes(x=AgeGroups, y = Cases)) + 
+                    geom_bar(stat = 'identity', fill = "red") +
+                    theme(axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1, size = 5)))
+
+
+```
+
+From the chart, I found that the most cases happened in 0-19 age group which is much more than the older group. The cases get lower and lower when the age increases. However the cases increse sharply again when the age is above 70.
+
+
+
+
+
+
+
