@@ -22,7 +22,7 @@ names(newone) <- c("AgeGroups","Cases")
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-print(newone)
+
 library(ggplot2)
 library(plotly)
 ggplotly(ggplot(data=newone,mapping = aes(x=AgeGroups, y = Cases)) + 
